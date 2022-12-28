@@ -40,6 +40,10 @@ function Auth() {
   };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
+  const onSocialClick = async () => {
+    const provider = new authServise.GoogleAuthProvider();
+    const data = await authServise.signInWithPopup(auth, provider);
+  };
 
   return (
     <div>
@@ -64,7 +68,7 @@ function Auth() {
         />
       </form>
       <div>
-        <button>google</button>
+        <button onClick={onSocialClick}>google</button>
       </div>
       <span onClick={toggleAccount}>
         {newAccount ? "Log in" : "Create Account"}
